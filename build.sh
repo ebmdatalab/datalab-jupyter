@@ -1,6 +1,6 @@
 #!/bin/bash
 
-UBUNTU_VERSION=18.04
-PYTHON_VERSION=3.8.1
+# This file mimics the environment provided by Docker Hub's build
+# service, so you can test builds locally
 
-docker build -t sebbacon/datalab-jupyter:python$PYTHON_VERSION --build-arg ubuntuversion=$UBUNTU_VERSION --build-arg pythonversion=$PYTHON_VERSION .
+DOCKER_REPO=ebmdatalab/datalab-jupyter DOCKERFILE_PATH=Dockerfile SOURCE_COMMIT=$(git rev-parse HEAD) hooks/build
