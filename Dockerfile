@@ -34,6 +34,9 @@ RUN pyenv global $pythonversion
 # Install pip
 RUN curl https://bootstrap.pypa.io/get-pip.py | python
 
+# Install pip-tools
+RUN pip install pip-tools --upgrade
+
 # Install jupyter
 RUN pip install jupyter --upgrade
 RUN pip install jupyterlab --upgrade
