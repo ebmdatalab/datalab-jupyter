@@ -23,10 +23,12 @@ Images that use this as the base should reference it by tag, so the correct vers
 
 Builds of different pythons are handled by Docker Hub's build service,
 which [provides custom build
-hooks](https://docs.docker.com/docker-hub/builds/advanced/). The file
-at `hooks/build` can be edited to support more python versions.
+hooks](https://docs.docker.com/docker-hub/builds/advanced/) (see the content of `hooks/`).
+
+Our hooks build one Ubuntu version and one or more Python versions as
+specified in the `BUILD_VERSIONS` file.
 
 When finalising a notebook for publication, a docker tag including a
 git commit should be used to pin it, e.g. `ebmdatalab/datalab-jupyter:python3.8.1-85de6835b227bb854e8e718ffed5002d40a1218c`
 
-To build locally using the same hooks, run `./build.sh`.
+To build locally using the same hooks as Docker Hub, run `./build.sh`.

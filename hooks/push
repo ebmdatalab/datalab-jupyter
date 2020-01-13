@@ -3,6 +3,7 @@
 source "$(dirname "$DOCKERFILE_PATH")/BUILD_VERSIONS"
 
 for PYTHON_VERSION in $PYTHON_VERSIONS; do
-    docker build -t $DOCKER_REPO:python$PYTHON_VERSION --build-arg ubuntuversion=$UBUNTU_VERSION --build-arg pythonversion=$PYTHON_VERSION -f $DOCKERFILE_PATH .
     docker tag $DOCKER_REPO:python$PYTHON_VERSION $DOCKER_REPO:python$PYTHON_VERSION-$SOURCE_COMMIT
+    docker push $DOCKER_REPO:python$PYTHON_VERSION
+    docker push $DOCKER_REPO:python$PYTHON_VERSION-$SOURCE_COMMIT
 done

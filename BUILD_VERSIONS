@@ -1,0 +1,2 @@
+UBUNTU_VERSION=18.04
+PYTHON_VERSIONS="3.8.1"  # space delimted list
