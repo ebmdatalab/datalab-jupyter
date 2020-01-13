@@ -15,6 +15,8 @@ RUN apt-get install -y ca-certificates git
 RUN apt-get install -y pandoc texlive-xetex bash
 # Required to build extensions for jupyter
 RUN apt-get install -y nodejs
+# Required to build geopandas
+RUN apt-get install -y libgeos-dev
 
 RUN useradd -m app
 USER app
