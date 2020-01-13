@@ -1,0 +1,7 @@
+#!/bin/bash
+
+UBUNTU_VERSION=18.04
+
+# Copy these two lines for each version of python you'd like to build
+PYTHON_VERSION=3.8.1
+docker build -t $DOCKER_REPO:python$PYTHON_VERSION --build-arg ubuntuversion=$UBUNTU_VERSION --build-arg pythonversion=$PYTHON_VERSION -f $DOCKERFILE_PATH .
