@@ -34,17 +34,11 @@ RUN pyenv global $pythonversion
 # Install pip
 RUN curl https://bootstrap.pypa.io/get-pip.py | python
 
-# Install pip-tools
-RUN pip install pip-tools --upgrade
+COPY requirements.txt /tmp/
+RUN pip install --requirement /tmp/requirements.txt
 
-# Install jupyter
-RUN pip install jupyter --upgrade
-RUN pip install jupyterlab --upgrade
-
-# Install jupytext
-RUN pip install jupytext
+# Required to build jupytext extension
 RUN jupyter lab build
 
 # Useful for debugging
-RUN pip install bash_kernel
 RUN python -m bash_kernel.install

@@ -1,0 +1,12 @@
+# Basic requirements for notebook infrastructure
+pip-tools
+jupyter
+jupyterlab
+jupytext
+bash_kernel
+
+# Commonly-used libraries
+pandas-gbq
+pandas
+numpy
+ebmdatalab
