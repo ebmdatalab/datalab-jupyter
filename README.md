@@ -16,10 +16,16 @@ It includes:
 
 # Continuous integration
 
-Images that use this as the base should reference it by tag, so the correct version of Python is used. For example:
+Images that use this as the base should reference it by tag, so the
+correct version of Python is used. For example:
 
 
     FROM ebmdatalab/datalab-jupyter:python3.8.1
+
+When upgrading python here, also update the corresponding `FROM` in
+https://github.com/ebmdatalab/custom-docker/; the same applies to
+upgrading packages in `requirements.txt` and/or adding packages to
+`requirements.in`.
 
 Builds of different pythons are handled by Docker Hub's build service,
 which [provides custom build
