@@ -12,5 +12,10 @@ pandas-gbq
 pandas
 numpy
 ebmdatalab
+matplotlib
+
+# Both these required for plotly+notebooks
+plotly
+ipywidgets
 
 # Add extra per-notebook packages here

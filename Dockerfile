@@ -14,7 +14,7 @@ RUN apt-get install -y ca-certificates git
 # Useful for nbconvert
 RUN apt-get install -y pandoc texlive-xetex bash
 # Required to build extensions for jupyter
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs npm
 # Required to build geopandas
 RUN apt-get install -y libgeos-dev
 
@@ -31,13 +31,22 @@ RUN ls -l /home/app/.pyenv/bin
 RUN pyenv install $pythonversion
 RUN pyenv global $pythonversion
 
-# Install pip
+# Install pip and requirements
 RUN curl https://bootstrap.pypa.io/get-pip.py | python
-
 COPY requirements.txt /tmp/
 RUN pip install --requirement /tmp/requirements.txt
 
-# Required to build jupytext extension
+# Instructions from https://plot.ly/python/getting-started/
+# Jupyter widgets extension
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.1 --no-build
+
+# jupyterlab renderer support
+RUN jupyter labextension install jupyterlab-plotly@1.4.0 --no-build
+
+# FigureWidget support
+RUN jupyter labextension install plotlywidget@1.4.0 --no-build
+
+# Build extensions
 RUN jupyter lab build
 
 # Useful for debugging

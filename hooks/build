@@ -2,6 +2,9 @@
 
 source "$(dirname "$DOCKERFILE_PATH")/BUILD_VERSIONS"
 
+# Hack until this is fixed https://github.com/jazzband/pip-tools/issues/823
+chmod 755 requirements.txt
+
 for PYTHON_VERSION in $PYTHON_VERSIONS; do
     docker build -t $DOCKER_REPO:python$PYTHON_VERSION --build-arg ubuntuversion=$UBUNTU_VERSION --build-arg pythonversion=$PYTHON_VERSION -f $DOCKERFILE_PATH .
     docker tag $DOCKER_REPO:python$PYTHON_VERSION $DOCKER_REPO:python$PYTHON_VERSION-$SOURCE_COMMIT
