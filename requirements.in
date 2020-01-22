@@ -13,6 +13,7 @@ pandas
 numpy
 ebmdatalab
 matplotlib
+tqdm
 
 # Both these required for plotly+notebooks
 plotly
