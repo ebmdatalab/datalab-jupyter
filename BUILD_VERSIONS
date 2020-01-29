@@ -1,2 +1,2 @@
-UBUNTU_VERSION=18.04
+UBUNTU_VERSION=bionic    # must use the release name
 PYTHON_VERSIONS="3.8.1"  # space delimted list
