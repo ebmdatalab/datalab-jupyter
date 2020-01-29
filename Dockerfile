@@ -24,7 +24,7 @@ RUN apt-get install -y software-properties-common
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release --codename --short)-cran35/"
 RUN apt update
-RUN apt install r-base-dev
+RUN apt install -y r-base-dev
 
 # `staff` group required for local installation of R packages
 RUN useradd -m app --groups staff
