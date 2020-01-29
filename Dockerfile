@@ -4,7 +4,7 @@ ARG pythonversion
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
-
+ENV UBUNTU_VERSION $ubuntuversion
 RUN apt-get update
 RUN apt-get -y upgrade
 # Python dependencies
@@ -17,10 +17,12 @@ RUN apt-get install -y pandoc texlive-xetex bash
 RUN apt-get install -y nodejs npm
 # Required to build geopandas
 RUN apt-get install -y libgeos-dev
+# Allows us to use add-apt-repository (below)
+RUN apt-get install -y software-properties-common
 
 # R 3.6 per https://cran.r-project.org/bin/linux/ubuntu/README.html
-RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu $ubuntuversion-cran35/'
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release --codename --short)-cran35/"
 RUN apt update
 RUN apt install r-base-dev
 
