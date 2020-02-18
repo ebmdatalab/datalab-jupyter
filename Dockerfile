@@ -26,17 +26,12 @@ RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_r
 RUN apt update
 RUN apt install -y r-base-dev
 
-# `staff` group required for local installation of R packages
-RUN useradd -m app --groups staff
-USER app
-
 # Install pyenv
 RUN curl https://pyenv.run | bash
-ENV PATH="/home/app/.pyenv/shims:/home/app/.pyenv/bin:${PATH}"
+ENV PATH="/root/.pyenv/shims:/root/.pyenv/bin:${PATH}"
 ENV PYENV_SHELL=bash
 
 # Install python
-RUN ls -l /home/app/.pyenv/bin
 RUN pyenv install $pythonversion
 RUN pyenv global $pythonversion
 
