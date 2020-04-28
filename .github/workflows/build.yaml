@@ -12,3 +12,4 @@ jobs:
         registry: docker.pkg.github.com
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+        buildargs: ubuntuversion=bionic,pythonversion=3.8.1
